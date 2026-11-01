@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340" role="img" aria-label="A laptop closes its lid while Claude Code keeps working, waits five idle minutes, then goes to sleep.">
+  <style>
+    :root { --card: #faf8f5; --line: #e6e1d8; --ink: #24211c; --muted: #76705f; --screen: #1d1b18; --shell: #cfc9bd; --base: #b9b2a4; --term: #e8e4da; --term-dim: #8d877a; --accent: #d97757; --ok: #3f9d6b; --wait: #d9962b; --off: #a59f92; }
+    @media (prefers-color-scheme: dark) {
+      :root { --card: #17161a; --line: #2c2a30; --ink: #f2efe8; --muted: #a09b90; --screen: #0e0d10; --shell: #47444c; --base: #5a5660; --term: #e8e4da; --term-dim: #827d73; --accent: #e8886a; --ok: #58c08a; --wait: #eeb04a; --off: #6c6873; }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .title { font-size: 38px; font-weight: 700; letter-spacing: -0.8px; fill: var(--ink); }
+    .sub { font-size: 18px; fill: var(--muted); }
+    .state { font-size: 17px; font-weight: 600; fill: var(--ink); }
+    .tick { font-size: 12px; fill: var(--muted); }
+
+    .a { animation-duration: 16s; animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
+
+    #lid { transform-origin: 660px 266px; animation-name: lid; }
+    @keyframes lid { 0%, 20% { transform: scaleY(1); } 28%, 86% { transform: scaleY(0.035); } 94%, 100% { transform: scaleY(1); } }
+
+    #s1 { animation-name: s1; } @keyframes s1 { 0%, 20% { opacity: 1; } 24%, 92% { opacity: 0; } 96%, 100% { opacity: 1; } }
+    #s2 { animation-name: s2; } @keyframes s2 { 0%, 24% { opacity: 0; } 28%, 50% { opacity: 1; } 54%, 100% { opacity: 0; } }
+    #s3 { animation-name: s3; } @keyframes s3 { 0%, 50% { opacity: 0; } 54%, 68% { opacity: 1; } 72%, 100% { opacity: 0; } }
+    #s4 { animation-name: s4; } @keyframes s4 { 0%, 68% { opacity: 0; } 72%, 88% { opacity: 1; } 92%, 100% { opacity: 0; } }
+
+    #led { animation-name: led; }
+    @keyframes led { 0%, 50% { fill: var(--ok); } 54%, 68% { fill: var(--wait); } 72%, 88% { fill: var(--off); } 92%, 100% { fill: var(--ok); } }
+    #glow { animation-name: glow; }
+    @keyframes glow { 0%, 26% { opacity: 0; } 32%, 50% { opacity: .55; } 41% { opacity: .15; } 56%, 100% { opacity: 0; } }
+
+    #zzz { animation-name: zzz; }
+    @keyframes zzz { 0%, 72% { opacity: 0; transform: translateY(8px); } 77%, 86% { opacity: 1; transform: translateY(0); } 90%, 100% { opacity: 0; transform: translateY(-6px); } }
+
+    #marker { animation-name: marker; }
+    @keyframes marker { 0%, 20% { transform: translateX(0); } 28%, 50% { transform: translateX(120px); } 54%, 68% { transform: translateX(240px); } 72%, 88% { transform: translateX(360px); } 96%, 100% { transform: translateX(0); } }
+
+    .bar { transform-box: fill-box; transform-origin: left center; animation: grow 3s ease-in-out infinite alternate; }
+    .bar.b { animation-delay: -1s; } .bar.c { animation-delay: -2s; }
+    @keyframes grow { from { transform: scaleX(.3); } to { transform: scaleX(1); } }
+    #cursor { animation: blink 1.1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .a, .bar, #cursor { animation: none; }
+      #s2, #s3, #s4, #zzz, #glow { opacity: 0; }
+    }
+  </style>
+
+  <rect x="1" y="1" width="898" height="338" rx="20" fill="var(--card)" stroke="var(--line)"/>
+
+  <text class="title" x="48" y="92">claude-lid-awake</text>
+  <text class="sub" x="48" y="126">Close the lid. Claude Code keeps working.</text>
+
+  <g id="s1" class="a"><circle cx="55" cy="176" r="5" fill="var(--ok)"/><text class="state" x="70" y="182">Working, lid open</text></g>
+  <g id="s2" class="a" opacity="0"><circle cx="55" cy="176" r="5" fill="var(--ok)"/><text class="state" x="70" y="182">Lid closed, still working</text></g>
+  <g id="s3" class="a" opacity="0"><circle cx="55" cy="176" r="5" fill="var(--wait)"/><text class="state" x="70" y="182">Finished, 5 minutes to reply</text></g>
+  <g id="s4" class="a" opacity="0"><circle cx="55" cy="176" r="5" fill="var(--off)"/><text class="state" x="70" y="182">Asleep, as it should be</text></g>
+
+  <g>
+    <line x1="56" y1="238" x2="416" y2="238" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="56" cy="238" r="4" fill="var(--line)"/><circle cx="176" cy="238" r="4" fill="var(--line)"/><circle cx="296" cy="238" r="4" fill="var(--line)"/><circle cx="416" cy="238" r="4" fill="var(--line)"/>
+    <circle id="marker" class="a" cx="56" cy="238" r="8" fill="var(--accent)"/>
+    <text class="tick" x="56" y="268" text-anchor="middle">Open</text>
+    <text class="tick" x="176" y="268" text-anchor="middle">Closed</text>
+    <text class="tick" x="296" y="268" text-anchor="middle">Idle</text>
+    <text class="tick" x="416" y="268" text-anchor="middle">Asleep</text>
+  </g>
+
+  <ellipse id="glow" class="a" cx="660" cy="272" rx="170" ry="16" fill="var(--ok)" opacity="0"/>
+
+  <g id="lid" class="a">
+    <rect x="522" y="72" width="276" height="194" rx="11" fill="var(--shell)"/>
+    <rect x="531" y="81" width="258" height="176" rx="5" fill="var(--screen)"/>
+    <text class="mono" x="545" y="108" font-size="13" fill="var(--term-dim)">$ <tspan fill="var(--term)">claude</tspan></text>
+    <rect class="bar" x="545" y="125" width="210" height="8" rx="4" fill="var(--accent)"/>
+    <rect class="bar b" x="545" y="145" width="170" height="8" rx="4" fill="var(--term-dim)"/>
+    <rect class="bar c" x="545" y="165" width="195" height="8" rx="4" fill="var(--term-dim)"/>
+    <rect class="bar" x="545" y="185" width="130" height="8" rx="4" fill="var(--term-dim)"/>
+    <rect id="cursor" x="545" y="210" width="9" height="16" fill="var(--term)"/>
+  </g>
+  <path d="M498 266 H822 L812 281 Q810 284 806 284 H514 Q510 284 508 281 Z" fill="var(--base)"/>
+  <rect x="632" y="266" width="56" height="5" rx="2.5" fill="var(--shell)"/>
+  <circle id="led" class="a" cx="660" cy="277" r="3" fill="var(--ok)"/>
+
+  <g id="zzz" class="a" opacity="0" fill="var(--muted)" font-weight="700">
+    <text x="714" y="232" font-size="16">z</text>
+    <text x="734" y="212" font-size="21">z</text>
+    <text x="758" y="188" font-size="27">z</text>
+  </g>
+</svg>

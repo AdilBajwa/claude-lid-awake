@@ -1,0 +1,28 @@
+# Local notes
+docs/
+
+# Build output
+/LidAwakeMenu
+menubar/LidAwakeMenu
+*.o
+*.dSYM/
+
+# Runtime files
+*.log
+*.pid
+sessions/
+handoffs/
+runs/
+closures/
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+
+# macOS and editors
+.DS_Store
+.vscode/
+.idea/
+*.swp
